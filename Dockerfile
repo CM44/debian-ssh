@@ -6,6 +6,7 @@ RUN apt-get update \
     && apt-get install -y openssh-server \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean \
+    && mkdir -p /var/run/sshd \
     && echo "root:${SERVER_PASS}" | chpasswd \
     && sed -ri 's/^PasswordAuthentication\s+.*/PasswordAuthentication no/' /etc/ssh/sshd_config \
     && echo "PasswordAuthentication no" >>/etc/ssh/sshd_config \
