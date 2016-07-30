@@ -7,6 +7,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean \
     && mkdir -p /var/run/sshd \
+    && mkdir -p /root/.ssh \
     && echo "root:${SERVER_PASS}" | chpasswd \
     && sed -ri 's/^PasswordAuthentication\s+.*/PasswordAuthentication no/' /etc/ssh/sshd_config \
     && echo "PasswordAuthentication no" >>/etc/ssh/sshd_config \
